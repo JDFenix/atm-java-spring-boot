@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ATM</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="atm-container">
+    <h1 class="text-center">Cajero Automático</h1>
+
+    <div th:if="${message}" class="message">
+        <p th:text="${message}"></p>
+        <div th:if=" ${cashSolicited}">
+            <p th:text="${cashSolicited}" ></p>
+        </div>
+    </div>
+
+
+<div class="display">
+    <div th:if="${currentAmount}">
+        <h2 th:text="${currentAmount}">0</h2>
+    </div>
+</div>
+
+
+<div class="buttons text-center">
+    <div class="btn-group-vertical">
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value="1"/>
+            <button type="submit" class="btn btn-primary">1</button>
+        </form>
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value="2"/>
+            <button type="submit" class="btn btn-primary">2</button>
+        </form>
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value="3"/>
+            <button type="submit" class="btn btn-primary">3</button>
+        </form>
+    </div>
+    <div class="btn-group-vertical">
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value="4"/>
+            <button type="submit" class="btn btn-primary">4</button>
+        </form>
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value="5"/>
+            <button type="submit" class="btn btn-primary">5</button>
+        </form>
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value="6"/>
+            <button type="submit" class="btn btn-primary">6</button>
+        </form>
+    </div>
+    <div class="btn-group-vertical">
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value="7"/>
+            <button type="submit" class="btn btn-primary">7</button>
+        </form>
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value="8"/>
+            <button type="submit" class="btn btn-primary">8</button>
+        </form>
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value="9"/>
+            <button type="submit" class="btn btn-primary">9</button>
+        </form>
+    </div>
+    <div class="btn-group">
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value="0"/>
+            <button type="submit" class="btn btn-primary">0</button>
+        </form>
+        <form th:action="@{/atm/clickNumber}" method="post">
+            <input type="hidden" name="number" value=".50"/>
+            <button type="submit" class="btn btn-primary">.50</button>
+        </form>
+        <form th:action="@{/atm/clear}" method="post">
+            <button type="submit" class="btn btn-danger">C</button>
+        </form>
+    </div>
+</div>
+
+<form th:action="@{/atm/withdraw}" method="post" class="mt-4">
+    <button type="submit" class="btn btn-success withdraw-button">Retirar</button>
+</form>
+
+<div th:if="${coinsOrBillsToWithdraw}" class="mt-4">
+    <h2>Dinero Retirado</h2>
+    <ul>
+        <li th:each="cash : ${coinsOrBillsToWithdraw}">
+            Denominación: <span th:text="${cash.denomination}">0</span> - Cantidad: <span
+                th:text="${cash.quantity}">0</span>
+        </li>
+    </ul>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

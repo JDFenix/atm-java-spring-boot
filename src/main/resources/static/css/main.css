@@ -1,0 +1,45 @@
+body {
+    background-color: #f7f7f7;
+}
+
+.atm-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #2c3e50;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.display {
+    background: #34495e;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2em;
+    border-radius: 10px;
+}
+
+.buttons button {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    font-size: 1.5em;
+    border-radius: 10px;
+}
+
+.withdraw-button {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.5em;
+    border-radius: 10px;
+}
+
+.message {
+    background: #e7d63c;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
